@@ -19,7 +19,7 @@ set(DOCKER_SOURCES
 # ---
 
 
-#set(BOOST_ROOT "../dash-devnet-tool/boost")
+set(BOOST_ROOT "../dash-devnet-tool/boost")
 
 
 # GET BOOST LIBRARY -> ONLY NEEDS PROCESS
@@ -39,3 +39,12 @@ target_include_directories(${LIB_DOCKER} PRIVATE include/private)
 target_include_directories(${LIB_DOCKER} PRIVATE ${BOOST_INCLUDE_DIRS})
 # SET OPTIONAL COMPILE FLAGS
 target_compile_options(${LIB_DOCKER} PRIVATE -Wno-narrowing)
+
+
+# ---
+
+
+include(CTest)
+if(BUILD_TESTING)
+    add_subdirectory(test)
+endif()
