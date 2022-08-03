@@ -19,9 +19,6 @@ set(DOCKER_SOURCES
 # ---
 
 
-set(BOOST_ROOT "../dash-devnet-tool/boost")
-
-
 # GET BOOST LIBRARY -> ONLY NEEDS PROCESS
 # WILL INTERRUPT CMAKE ON NOT FOUND THROUGH REQUIRED
 find_package(Boost 1.79 REQUIRED)
