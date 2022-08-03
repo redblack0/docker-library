@@ -2,27 +2,10 @@
 
 
 #include <boost/process.hpp>
-#include <boost/filesystem.hpp>
 #include <sstream>
-#include <iostream>
 
 
 std::string execute(const std::string& command) {
-    boost::filesystem::path p{"/home/redblack0/dash-devnet-tool/"};
-    std::string ex{"exists"};
-    std::string nex{"does not exist"};
-    std::cout << (boost::filesystem::exists(p) ? ex : nex) << std::endl;
-
-    std::vector<boost::filesystem::path> f{p};
-    for (auto a : f) {
-        std::cout << a << std::endl;
-    }
-    
-
-    boost::filesystem::path ptod = boost::process::search_path("Dockerfile", {p});
-    std::cout << ptod << boost::filesystem::current_path() << std::endl;
-
-
     boost::process::ipstream cmd_stdout, cmd_stderr;
     boost::process::system(command, boost::process::std_out > cmd_stdout, boost::process::std_err > cmd_stderr);
     std::stringstream out, err;
