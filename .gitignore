@@ -1,2 +1,5 @@
 # cmake build directory
 build
+
+# optional local boost directory
+boost
