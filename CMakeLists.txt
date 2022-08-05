@@ -35,7 +35,7 @@ find_package(Boost 1.79 COMPONENTS filesystem REQUIRED)
 message(STATUS "Found valid Boost Sources")
 set(LIB_DOCKER _docker_library)
 message(STATUS "Creating static Docker Library")
-add_library(${LIB_DOCKER} STATIC ${DOCKER_SOURCES})
+add_library(${LIB_DOCKER} SHARED ${DOCKER_SOURCES})
 # DECLARE HEADER LIBRARY HEADER
 list(APPEND CMAKE_MESSAGE_INDENT "-- ")
 message(STATUS "Including Header ...")
