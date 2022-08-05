@@ -19,31 +19,25 @@ set(DOCKER_SOURCES
 # ---
 
 
-message(STATUS "Check for Boost Root ...")
+message(STATUS "Check for Boost Library ...")
+find_package(Boost 1.79 COMPONENTS filesystem REQUIRED)
+
 list(APPEND CMAKE_MESSAGE_INDENT "-- ")
-if(NOT DEFINED BOOST_ROOT)
-    message(STATUS "Boost root was not defined from outside.")
-    message(STATUS "Trying to use local boost directory ${CMAKE_CURRENT_SOURCE_DIR}/boost")
-    set(BOOST_ROOT "boost")
-else()
-    message(STATUS "Using defined Boost Root at ${BOOST_ROOT}")
-endif()
+    message(STATUS "Using defined Boost Header at ${Boost_INCLUDE_DIRS}")
+    message(STATUS "Using defined Boost Libraries at ${Boost_LIBRARY_DIRS}")
 list(POP_BACK CMAKE_MESSAGE_INDENT)
 
-
-find_package(Boost 1.79 COMPONENTS filesystem REQUIRED)
 message(STATUS "Found valid Boost Sources")
 set(LIB_DOCKER _docker_library)
 message(STATUS "Creating static Docker Library")
 add_library(${LIB_DOCKER} SHARED ${DOCKER_SOURCES})
-# DECLARE HEADER LIBRARY HEADER
 list(APPEND CMAKE_MESSAGE_INDENT "-- ")
-message(STATUS "Including Header ...")
-target_include_directories(${LIB_DOCKER}    PUBLIC include/public
-                                            PRIVATE include/private
-                                            PRIVATE ${Boost_INCLUDE_DIRS})
-message(STATUS "Including Boost Sources ...")
-target_link_libraries(${LIB_DOCKER}         PRIVATE ${BOOST_LIBRARIES})
+    message(STATUS "Including Header ...")
+    target_include_directories(${LIB_DOCKER}    PUBLIC include/public
+                                                PRIVATE include/private
+                                                PRIVATE ${Boost_INCLUDE_DIRS})
+    message(STATUS "Including Boost Sources ...")
+    target_link_libraries(${LIB_DOCKER}         PRIVATE ${BOOST_LIBRARIES})
 list(POP_BACK CMAKE_MESSAGE_INDENT)  
 
 
