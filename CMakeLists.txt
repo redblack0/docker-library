@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.4.0)
+cmake_minimum_required(VERSION 3.17.0)
 
 project(docker-library CXX)
 
@@ -20,7 +20,7 @@ set(DOCKER_SOURCES
 
 
 message(STATUS "Check for Boost Library ...")
-find_package(Boost 1.79 COMPONENTS filesystem REQUIRED)
+find_package(Boost 1.79 COMPONENTS filesystem REQUIRED QUIET)
 
 list(APPEND CMAKE_MESSAGE_INDENT "-- ")
     message(STATUS "Using defined Boost Header at ${Boost_INCLUDE_DIRS}")
@@ -28,7 +28,9 @@ list(APPEND CMAKE_MESSAGE_INDENT "-- ")
 list(POP_BACK CMAKE_MESSAGE_INDENT)
 
 message(STATUS "Found valid Boost Sources")
-set(LIB_DOCKER _docker_library)
+if(NOT DEFINED LIB_DOCKER)
+    set(LIB_DOCKER docker_library)
+endif()
 message(STATUS "Creating static Docker Library")
 add_library(${LIB_DOCKER} SHARED ${DOCKER_SOURCES})
 list(APPEND CMAKE_MESSAGE_INDENT "-- ")
