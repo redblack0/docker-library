@@ -1,8 +1,8 @@
-#ifndef DOCKERNETWORK_HPP
-#define DOCKERNETWORK_HPP
+#ifndef DOCKER_NETWORK_HPP
+#define DOCKER_NETWORK_HPP
 
 #include <string>
-#include <network.hpp>
+#include <docker/network.hpp>
 
 namespace Docker {
     class BridgeNetwork : public Network {

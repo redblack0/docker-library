@@ -1,7 +1,7 @@
-#ifndef DOCKER_HPP
-#define DOCKER_HPP
+#ifndef DOCKER_DOCKER_CLI_HPP
+#define DOCKER_DOCKER_CLI_HPP
 
-#include <errors.hpp>
+#include <docker/errors.hpp>
 #include <string>
 
 namespace Docker {

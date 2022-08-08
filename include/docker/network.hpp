@@ -1,5 +1,5 @@
-#ifndef NETWORKINTERFACE_HPP
-#define NETWORKINTERFACE_HPP
+#ifndef DOCKER_NETWORK_INTERFACE_HPP
+#define DOCKER_NETWORK_INTERFACE_HPP
 
 #include <string>
 // #include <vector>

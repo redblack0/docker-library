@@ -1,5 +1,5 @@
-#ifndef DOCKERERRORS_HPP
-#define DOCKERERRORS_HPP
+#ifndef DOCKER_ERRORS_HPP
+#define DOCKER_ERRORS_HPP
 
 #include <string>
 

@@ -1,7 +1,7 @@
-#ifndef DOCKERCONTAINER_HPP
-#define DOCKERCONTAINER_HPP
+#ifndef DOCKER_CONTAINER_HPP
+#define DOCKER_CONTAINER_HPP
 
-#include <container.hpp>
+#include <docker/container.hpp>
 
 namespace Docker {
     class ContainerImpl : public Container {

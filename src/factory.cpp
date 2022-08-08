@@ -1,4 +1,4 @@
-#include <factory.hpp>          // for base classes
+#include <docker/factory.hpp>          // for base classes
 #include <docker.hpp>           // for cli calls
 #include <container-impl.hpp>   // for specific container
 #include <network-impl.hpp>     // for specific network

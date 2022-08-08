@@ -1,8 +1,8 @@
-#ifndef DOCKERFACTORY_HPP
-#define DOCKERFACTORY_HPP
+#ifndef DOCKER_FACTORY_HPP
+#define DOCKER_FACTORY_HPP
 
-#include <container.hpp>
-#include <network.hpp>
+#include <docker/container.hpp>
+#include <docker/network.hpp>
 
 namespace Docker {
     namespace Factory {
