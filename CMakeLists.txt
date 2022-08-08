@@ -5,7 +5,7 @@ project(docker-library CXX)
 
 # ---
 
-set(BOOST_ROOT "../dash-devnet-tool/extern/boost/boost")
+
 message(STATUS "Check for Boost Library ...")
 find_package(Boost 1.79 COMPONENTS filesystem REQUIRED QUIET)
 list(APPEND CMAKE_MESSAGE_INDENT "-- ")
