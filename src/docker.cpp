@@ -17,8 +17,8 @@ std::string execute(const std::string& command) {
 }
 
 
- std::string Docker::CliCalls::container_create(const std::string& image,const  std::string& network_name,const  std::string& container_ip) {
-    if (image == "") return {"", "Error: must set an image for container to be built on!"};
+ std::string Docker::CliCalls::container_create(const std::string& image,const std::string& network_name,const std::string& container_ip) {
+    if (image == "") return {"Error: must set an image for container to be built on!"};
     if (network_name != "") {
         // connect to network with static ip
         if (container_ip != "") return execute("docker container create -it --network " + network_name + " --ip " + container_ip + " " + image);
@@ -26,7 +26,7 @@ std::string execute(const std::string& command) {
         return execute("docker container create -it --network " + network_name + " " + image);
     }
     if (container_ip != "") {
-        return {"", "Error: can not set ip when no network to connect to was given!"};
+        return {"Error: can not set ip when no network to connect to was given!"};
     }
     // create simple container -> connect to default network
     return execute("docker container create -it " + image);
