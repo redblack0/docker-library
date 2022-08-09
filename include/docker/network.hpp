@@ -2,18 +2,16 @@
 #define DOCKER_NETWORK_INTERFACE_HPP
 
 #include <string>
-// #include <vector>
 
 namespace Docker {
     class Network {
         public :
             // getter for attributes
-            inline std::string getName() { return name; };
-            inline std::string getSubnet() { return subnet; }
+            inline std::string get_name() { return name; }
+            inline std::string get_subnet() { return subnet; }
 
             // public class methods
             // virtual <std::vector<std::string>> get_connected_container() = 0;
-            // virtual std::string get_unused_ip() = 0;
 
             // delete the network
             virtual std::string remove() = 0;
