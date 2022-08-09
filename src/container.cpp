@@ -7,8 +7,11 @@ std::string Docker::ContainerImpl::execute(const std::string& command){
 }
 
 
-std::string Docker::ContainerImpl::getStatus() {
+std::string Docker::ContainerImpl::get_status() {
     return Docker::CliCalls::container_list("--filter id=" + id + " --all --format \"{{.Status}}\"");
+}
+std::string Docker::ContainerImpl::get_name() {
+    return Docker::CliCalls::container_list("--filter id=" + id + " --all --format \"{{.Name}}\"");
 }
 std::string Docker::ContainerImpl::start() {
     return Docker::CliCalls::container_start(id);

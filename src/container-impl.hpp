@@ -12,12 +12,12 @@ namespace Docker {
             // execute commands inside container
             std::string execute(const std::string& command);
             // container status control
-            std::string getStatus();
+            std::string get_status();
+            std::string get_name();
             std::string start();
             std::string stop();
             std::string pause();
             std::string unpause();
-            // dangerous
             std::string remove();
     };
 }
