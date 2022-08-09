@@ -1,5 +1,6 @@
 #include <container-impl.hpp>
 #include <docker.hpp>
+#include <algorithm>
 
 
 std::string Docker::ContainerImpl::execute(const std::string& command){
@@ -11,7 +12,9 @@ std::string Docker::ContainerImpl::get_status() {
     return Docker::CliCalls::container_list("--filter id=" + id + " --all --format \"{{.Status}}\"");
 }
 std::string Docker::ContainerImpl::get_name() {
-    return Docker::CliCalls::container_list("--filter id=" + id + " --all --format \"{{.Names}}\"");
+    auto name = Docker::CliCalls::container_list("--filter id=" + id + " --all --format \"{{.Names}}\"");
+    name.erase(std::remove(name.begin(), name.end(), '\n'), name.end());
+    return name;
 }
 std::string Docker::ContainerImpl::start() {
     return Docker::CliCalls::container_start(id);
