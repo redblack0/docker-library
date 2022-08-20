@@ -15,14 +15,6 @@ Docker::BridgeNetwork::BridgeNetwork(const std::string& name) : Network(name) {
 Docker::BridgeNetwork::BridgeNetwork(const std::string& name, const std::string& subnet) : Network(name, subnet) { }
 
 
-std::string Docker::BridgeNetwork::filter(const std::string& filter) {
-    return Docker::CliCalls::network_list(filter);
-}
-std::string Docker::BridgeNetwork::filter_by_name(const std::string& name) {
-    return filter("--filter name=" + name + " --format \"{{.Name}}\"");
-}
-
-
 std::string Docker::BridgeNetwork::retrieve_network_information() {
     return Docker::CliCalls::network_inspect(get_name());
 }

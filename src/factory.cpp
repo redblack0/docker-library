@@ -1,4 +1,4 @@
-#include <docker/factory.hpp>          // for base classes
+#include <docker/factory.hpp>   // for base classes
 #include <docker.hpp>           // for cli calls
 #include <container-impl.hpp>   // for specific container
 #include <network-impl.hpp>     // for specific network
@@ -40,15 +40,9 @@ Docker::Network* Docker::Factory::network_connect(const std::string& name) {
 }
 
 
-// std::string status{c.getStatus()};
-    // if (status == "") {
-    //     // TODO container from config does not exist -> what to do here?
-    // } else if ( status.find("Paused")   != std::string::npos) {
-    //     Docker::container_unpause(c.id); // container was paused
-    // } else if ( status.find("Exited")   != std::string::npos || 
-    //             status.find("Created")  != std::string::npos || 
-    //             status.find("Up")       != std::string::npos) {
-    //     // container is in a state where starting doesn't fail
-    // } else {
-    //     // any other kind of error -> throw something / quit?
-    // }
+std::string Docker::Factory::network_filter(const std::string& filter) {
+    return Docker::CliCalls::network_list(filter);
+}
+std::string Docker::Factory::network_filter_by_name(const std::string& name) {
+    return network_filter("--filter name=" + name + " --format \"{{.Name}}\"");
+}

@@ -11,8 +11,6 @@ namespace Docker {
             BridgeNetwork(const std::string& name, const std::string& subnet);
 
             // public class methods
-            std::string filter(const std::string& filter);
-            std::string filter_by_name(const std::string& name);
             // delete the network
             std::string remove();
 
