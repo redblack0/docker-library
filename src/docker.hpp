@@ -25,6 +25,7 @@ namespace Docker {
         std::string network_create(const std::string& name);
         std::string network_create(const std::string& name, const std::string& subnet);
         std::string network_inspect(const std::string& name);
+        std::string network_list(const std::string& params);
         std::string network_remove(const std::string& name);
     }
 }

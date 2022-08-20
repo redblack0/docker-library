@@ -17,7 +17,7 @@ std::string execute(const std::string& command) {
 }
 
 
- std::string Docker::CliCalls::container_create(const std::string& image,const std::string& network_name,const std::string& container_ip) {
+std::string Docker::CliCalls::container_create(const std::string& image,const std::string& network_name,const std::string& container_ip) {
     if (image == "") return {"Error: must set an image for container to be built on!"};
     if (network_name != "") {
         // connect to network with static ip
@@ -31,43 +31,46 @@ std::string execute(const std::string& command) {
     // create simple container -> connect to default network
     return execute("docker container create -it " + image);
 }
- std::string Docker::CliCalls::container_execute(const std::string& name, const std::string& command) {
+std::string Docker::CliCalls::container_execute(const std::string& name, const std::string& command) {
     return execute("docker exec " + name + " " + command);
 }
- std::string Docker::CliCalls::container_list(const std::string& params) {
+std::string Docker::CliCalls::container_list(const std::string& params) {
     return execute("docker container ls " + params);
 }
- std::string Docker::CliCalls::container_inspect(const std::string& name) {
+std::string Docker::CliCalls::container_inspect(const std::string& name) {
     return execute("docker container inspect " + name);
 }
 
 
- std::string Docker::CliCalls::container_start(const std::string& name) {
+std::string Docker::CliCalls::container_start(const std::string& name) {
     return execute("docker container start " + name);
 }
- std::string Docker::CliCalls::container_stop(const std::string& name) {
+std::string Docker::CliCalls::container_stop(const std::string& name) {
     return execute("docker container stop " + name);
 }
- std::string Docker::CliCalls::container_remove(const std::string& name) {
+std::string Docker::CliCalls::container_remove(const std::string& name) {
     return execute("docker container rm " + name);
 }
- std::string Docker::CliCalls::container_pause(const std::string& name) {
+std::string Docker::CliCalls::container_pause(const std::string& name) {
     return execute("docker container pause " + name);
 }
- std::string Docker::CliCalls::container_unpause(const std::string& name) {
+std::string Docker::CliCalls::container_unpause(const std::string& name) {
     return execute("docker container unpause " + name);
 }
 
 
- std::string Docker::CliCalls::network_create(const std::string& name) {
+std::string Docker::CliCalls::network_create(const std::string& name) {
     return execute("docker network create " + name);
 }
- std::string Docker::CliCalls::network_create(const std::string& name, const std::string& subnet) {
+std::string Docker::CliCalls::network_create(const std::string& name, const std::string& subnet) {
     return execute("docker network create --subnet=" + subnet + " " + name);
 }
- std::string Docker::CliCalls::network_inspect(const std::string& name) {
+std::string Docker::CliCalls::network_inspect(const std::string& name) {
     return execute("docker network inspect " + name);
 }
- std::string Docker::CliCalls::network_remove(const std::string& name) {
+std::string Docker::CliCalls::network_list(const std::string& params) {
+    return execute("docker network ls " + params);
+}
+std::string Docker::CliCalls::network_remove(const std::string& name) {
     return execute("docker network rm " + name);
 }

@@ -11,6 +11,8 @@ namespace Docker {
             inline std::string get_subnet() { return subnet; }
 
             // public class methods
+            virtual std::string filter(const std::string& filter) = 0;
+            virtual std::string filter_by_name(const std::string& name) = 0;
             // virtual <std::vector<std::string>> get_connected_container() = 0;
 
             // delete the network
