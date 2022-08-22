@@ -17,9 +17,16 @@ std::string execute(const std::string& command) {
 }
 
 
-std::string Docker::CliCalls::container_create(const std::string& image,const std::string& network_name,const std::string& container_ip, std::tuple<std::string> mount) {
+std::string Docker::CliCalls::container_create( const std::string& image,
+                                                const std::string& network_name,
+                                                const std::string& container_ip,
+                                                std::tuple<
+                                                    std::string, std::string
+                                                                    > mount) {
     std::string base{"docker container create -it "};
-    if (image == "") return {"Error: must set an image for container to be built on!"};
+    if (image == "") {
+        return {"Error: must set an image for container to be built on!"};
+    }
     if (network_name != "") {
         base += "--network " + network_name + " ";
         // connect to network with static ip
