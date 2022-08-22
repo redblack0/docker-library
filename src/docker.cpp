@@ -37,7 +37,7 @@ std::string Docker::CliCalls::container_create( const std::string& image,
         return {"Error: can not set ip when no network to connect to was given!"};
     }
     if (std::get<0>(mount) != "") {
-        base += "--mount type=bind,source=" + std::get<0>(mount) + ",target=" + std::get<0>(mount) + " ";
+        base += "--mount type=bind,source=" + std::get<0>(mount) + ",target=" + std::get<1>(mount) + " ";
     }
     // create simple container -> connect to default network
     return execute(base + image);
