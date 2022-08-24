@@ -6,6 +6,9 @@
 std::string Docker::ContainerImpl::execute(const std::string& command){
     return Docker::CliCalls::container_execute(id, command);
 }
+std::string Docker::ContainerImpl::attach(){
+    return Docker::CliCalls::container_attach(id);
+}
 
 
 std::string Docker::ContainerImpl::get_status() {

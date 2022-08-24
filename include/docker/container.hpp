@@ -8,6 +8,7 @@ namespace Docker {
         public :
             // execute commands inside container
             virtual std::string execute(const std::string& command) = 0;
+            virtual std::string attach() = 0;
             // container status control
             virtual std::string get_status() = 0;
             virtual std::string start() = 0;

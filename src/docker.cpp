@@ -51,6 +51,9 @@ std::string Docker::CliCalls::container_list(const std::string& params) {
 std::string Docker::CliCalls::container_inspect(const std::string& name) {
     return execute("docker container inspect " + name);
 }
+std::string Docker::CliCalls::container_attach(const std::string& name) {
+    return execute("docker exec -it " + name + " bash");
+}
 
 
 std::string Docker::CliCalls::container_start(const std::string& name) {
