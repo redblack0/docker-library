@@ -4,6 +4,7 @@
 #include <docker/container.hpp>
 #include <docker/network.hpp>
 #include <tuple>
+#include <vector>
 
 namespace Docker {
     typedef std::vector<std::tuple<std::string, std::string>> mount;
