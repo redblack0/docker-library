@@ -22,7 +22,7 @@ namespace Docker {
                                         const std::string& command);
         std::string container_list(     const std::string& = "");
         std::string container_inspect(  const std::string& name);
-        std::string container_attach(   const std::string& name);
+        void container_attach(   const std::string& name);
         // container status control methods
         std::string container_start(    const std::string& name);
         std::string container_stop(     const std::string& name);

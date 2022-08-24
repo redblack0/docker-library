@@ -11,7 +11,7 @@ namespace Docker {
 
             // execute commands inside container
             std::string execute(const std::string& command);
-            std::string attach();
+            void attach();
             // container status control
             std::string get_status();
             std::string get_name();
