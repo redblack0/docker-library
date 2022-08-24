@@ -30,7 +30,7 @@ set(DOCKER_SOURCES
         ## dependency layer
     "${CMAKE_CURRENT_SOURCE_DIR}/src/factory.cpp")
 
-message(STATUS "Creating static Docker Library")
+message(STATUS "Creating shared Docker Library")
 add_library(${LIB_DOCKER} SHARED ${DOCKER_SOURCES})
 list(APPEND CMAKE_MESSAGE_INDENT "-- ")
     message(STATUS "Including Header ...")
@@ -38,7 +38,7 @@ list(APPEND CMAKE_MESSAGE_INDENT "-- ")
                                                 PRIVATE src
                                                 PRIVATE ${Boost_INCLUDE_DIRS})
     message(STATUS "Including Boost Sources ...")
-    target_link_libraries(${LIB_DOCKER}         PRIVATE ${BOOST_LIBRARIES})
+    target_link_libraries(${LIB_DOCKER}         PRIVATE ${Boost_LIBRARIES})
 list(POP_BACK CMAKE_MESSAGE_INDENT)  
 
 
