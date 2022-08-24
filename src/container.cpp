@@ -1,12 +1,13 @@
 #include <container-impl.hpp>
 #include <docker.hpp>
+
 #include <algorithm>
 
 
-std::string Docker::ContainerImpl::execute(const std::string& command){
+std::string Docker::ContainerImpl::execute(const std::string& command) {
     return Docker::CliCalls::container_execute(id, command);
 }
-void Docker::ContainerImpl::attach(){
+void Docker::ContainerImpl::attach() {
     Docker::CliCalls::container_attach(id);
 }
 

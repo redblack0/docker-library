@@ -12,9 +12,6 @@ Docker::Container* Docker::Factory::container_create(   const std::string& image
                                                         const mount& mount) {
     return container_create(image, "", "", mount);
 }
-// Docker::Container Docker::Factory::container_create(const std::string& image, Network& n) {
-//     return container_create(image, n.getName(), n.getUnusedIp());
-// }
 Docker::Container* Docker::Factory::container_create(   const std::string& image, 
                                                         const std::string& network_name, 
                                                         const std::string& container_ip, 

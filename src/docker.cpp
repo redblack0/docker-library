@@ -20,9 +20,9 @@ std::string execute(const std::string& command) {
 std::string Docker::CliCalls::container_create( const std::string& image,
                                                 const std::string& network_name,
                                                 const std::string& container_ip,
-                                                std::tuple<
+                                                std::vector<std::tuple<
                                                     std::string, std::string
-                                                                    > mount) {
+                                                                    >> mount) {
     std::string base{"docker container create -it "};
     if (image == "") {
         return {"Error: must set an image for container to be built on!"};
@@ -36,8 +36,9 @@ std::string Docker::CliCalls::container_create( const std::string& image,
     } else if (container_ip != "") {
         return {"Error: can not set ip when no network to connect to was given!"};
     }
-    if (std::get<0>(mount) != "") {
-        base += "--mount type=bind,source=" + std::get<0>(mount) + ",target=" + std::get<1>(mount) + " ";
+    for (auto m : mount) {
+        base += "--mount type=bind,source=" + std::get<0>(m) + 
+                ",target=" + std::get<1>(m) + " ";
     }
     // create simple container -> connect to default network
     return execute(base + image);
@@ -52,7 +53,7 @@ std::string Docker::CliCalls::container_inspect(const std::string& name) {
     return execute("docker container inspect " + name);
 }
 void Docker::CliCalls::container_attach(const std::string& name) {
-    boost::process::system("docker exec -it " + name + " bash"); //, boost::process::std_out > cmd_stdout, boost::process::std_err > cmd_stderr);
+    boost::process::system("docker exec -it " + name + " bash");
 }
 
 

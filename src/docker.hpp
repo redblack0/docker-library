@@ -15,9 +15,9 @@ namespace Docker {
         std::string container_create(   const std::string& image,
                                         const std::string& network_name,
                                         const  std::string& container_ip, 
-                                        std::tuple<
+                                        std::vector<std::tuple<
                                             std::string, std::string
-                                                                > mount);
+                                                                >> mount);
         std::string container_execute(  const std::string& name, 
                                         const std::string& command);
         std::string container_list(     const std::string& = "");
