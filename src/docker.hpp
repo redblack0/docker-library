@@ -4,6 +4,7 @@
 #include <docker/errors.hpp>
 #include <string>
 #include <tuple>
+#include <vector>
 
 namespace Docker {
     inline void test_for_error(const std::string& err) { 
