@@ -2,15 +2,16 @@
 
 
 #include <boost/process.hpp>
+#include <boost/process/extend.hpp>
 #include <sstream>
 
 struct new_console : boost::process::extend::handler {
     template <typename Sequence>
-    void on_setup(boost:process::extend::windows_executor<char, Sequenz> & ex) {
+    void on_setup(boost::process::extend::windows_executor<char, Sequenz> & ex) {
         ex.creation_flags |= CREATE_NEW_CONSOLE;
     }
     template <typename Sequence>
-    void on_setup(boost:process::extend::posix_executor<Sequenz> & ex) {
+    void on_setup(boost::process::extend::posix_executor<Sequenz> & ex) {
         ex.creation_flags |= CREATE_NEW_CONSOLE;
     }
 }
