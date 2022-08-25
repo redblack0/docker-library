@@ -4,7 +4,7 @@
 #include <boost/process.hpp>
 #include <sstream>
 
-struct new_console() : boost::process::extend::handler {
+struct new_console : boost::process::extend::handler {
     template <typename Sequence>
     void on_setup(boost:process::extend::windows_executor<char, Sequenz> & ex) {
         ex.creation_flags |= CREATE_NEW_CONSOLE;
@@ -16,7 +16,7 @@ struct new_console() : boost::process::extend::handler {
 }
 std::string execute(const std::string& command) {
     boost::process::ipstream cmd_stdout, cmd_stderr;
-    boost::process::system(command, boost::process::std_out > cmd_stdout, boost::process::std_err > cmd_stderr);
+    boost::process::system(command, boost::process::std_out > cmd_stdout, boost::process::std_err > cmd_stderr, new_console());
     std::stringstream out, err;
     std::string s;
     while (getline(cmd_stderr, s)) err << s << std::endl;
