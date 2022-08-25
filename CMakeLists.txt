@@ -30,8 +30,8 @@ set(DOCKER_SOURCES
         ## dependency layer
     "${CMAKE_CURRENT_SOURCE_DIR}/src/factory.cpp")
 
-message(STATUS "Creating shared Docker Library")
-add_library(${LIB_DOCKER} SHARED ${DOCKER_SOURCES})
+message(STATUS "Creating static Docker Library")
+add_library(${LIB_DOCKER} STATIC ${DOCKER_SOURCES})
 list(APPEND CMAKE_MESSAGE_INDENT "-- ")
     message(STATUS "Including Header ...")
     target_include_directories(${LIB_DOCKER}    PUBLIC include
