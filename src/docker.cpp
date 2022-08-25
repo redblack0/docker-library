@@ -7,11 +7,11 @@
 
 struct new_console : boost::process::extend::handler {
     template <typename Sequence>
-    void on_setup(boost::process::extend::windows_executor<char, Sequenz> & ex) {
+    void on_setup(boost::process::extend::windows_executor<char, Sequence> & ex) {
         ex.creation_flags |= CREATE_NEW_CONSOLE;
     }
     template <typename Sequence>
-    void on_setup(boost::process::extend::posix_executor<Sequenz> & ex) {
+    void on_setup(boost::process::extend::posix_executor<Sequence> & ex) {
         ex.creation_flags |= CREATE_NEW_CONSOLE;
     }
 }
