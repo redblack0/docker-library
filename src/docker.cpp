@@ -7,7 +7,7 @@
 
 std::string execute(const std::string& command) {
     boost::process::ipstream cmd_stdout, cmd_stderr;
-    boost::process::system(command, boost::process::std_out > cmd_stdout, boost::process::std_err > cmd_stderr, new_console());
+    boost::process::system(command, boost::process::std_out > cmd_stdout, boost::process::std_err > cmd_stderr);
     std::stringstream out, err;
     std::string s;
     while (getline(cmd_stderr, s)) err << s << std::endl;
